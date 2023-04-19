@@ -1,6 +1,8 @@
 package com.example.assignment1
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         val beveragesFragment = Beverages()
         val sidesFragment = Sides()
         var flag: String = "Menu"
+
 
         var options = arrayOf("Menu","food", "beverages", "sides")
         spinnerVal.adapter= ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,options)
@@ -51,10 +54,12 @@ class MainActivity : AppCompatActivity() {
                         commit()
                     }
                 }
+
                 else if(flag == "food"){
                     supportFragmentManager.beginTransaction().apply {
                         replace(id.DefaultLayout, foodFragment)
                         commit()
+
                     }
                 }
                 else if(flag == "beverages") {
@@ -76,4 +81,38 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.my_menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.Main -> {
+                val fragment = Food() // replace with the fragment you want to navigate to
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.DefaultLayout, fragment)
+                    .commit()
+                return true
+            }
+            R.id.Beverages -> {
+                val fragment = Beverages() // replace with the fragment you want to navigate to
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.DefaultLayout, fragment)
+                    .commit()
+                return true
+            }
+            R.id.Sides -> {
+                val fragment = Sides() // replace with the fragment you want to navigate to
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.DefaultLayout, fragment)
+                    .commit()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
 }
