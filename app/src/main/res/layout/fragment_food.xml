@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Food">
+    tools:context=".FoodFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,18 +34,14 @@
                 android:layout_weight="1"
                 android:text="Thinly sliced raw beef served with arugula, shaved Parmesan, and drizzled with a lemon dressing." />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="45dp"
+            <Button
+                android:id="@+id/stakeBtn"
+                android:layout_width="41dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="$22" />
 
         </LinearLayout>
-
-
-
-
 
 
         <LinearLayout
@@ -71,12 +67,16 @@
                 android:layout_weight="1"
                 android:text="Crispy fries loaded with cheddar cheese, bacon, green onions, ranch, sour cream, and jalapeños - perfect for sharing or as a satisfying snack." />
 
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="$10" />
+            <RadioGroup
+                android:layout_width="65dp"
+                android:layout_height="match_parent" >
+
+                <Button
+                    android:id="@+id/lasagnaBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$10" />
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -104,48 +104,56 @@
                 android:layout_weight="1"
                 android:text=" Tender and flavorful meatballs made with a blend of ground beef and Italian seasonings, served with zesty marinara sauce." />
 
+            <RadioGroup
+                android:layout_width="65dp"
+                android:layout_height="match_parent" >
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="$8" />
+                <Button
+                    android:id="@+id/meatballsBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$8" />
+            </RadioGroup>
+
 
         </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="108dp"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="108dp"
+            android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="97dp"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="97dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/potato" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="179dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="A fluffy baked potato served with a dollop of sour cream and chives." />
+
+            <RadioGroup
+                android:layout_width="65dp"
+                android:layout_height="match_parent" >
+
+                <Button
+                    android:id="@+id/bakedpotatoBtn"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/potato" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/textView31"
-                    android:layout_width="179dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:text="A fluffy baked potato served with a dollop of sour cream and chives." />
-
-
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="$6.5" />
+            </RadioGroup>
 
-            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -170,15 +178,20 @@
                 android:layout_weight="1"
                 android:text=" Soft or crispy tortillas filled with your choice of seasoned meat or veggies, fresh toppings, and zesty salsa." />
 
+            <RadioGroup
+                android:layout_width="65dp"
+                android:layout_height="match_parent" >
 
-            <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="$9" />
+                <Button
+                    android:id="@+id/tacosBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$9" />
+            </RadioGroup>
+
 
         </LinearLayout>
 
     </LinearLayout>
+
 </FrameLayout>

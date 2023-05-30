@@ -23,6 +23,13 @@
 
         </menu>
 
+
     </item>
 
+    <item
+        android:id="@+id/cart"
+        android:title= " cart"
+        android:icon="@drawable/baseline_shopping_cart_24"
+        app:showAsAction="ifRoom"
+        />
 </menu>
