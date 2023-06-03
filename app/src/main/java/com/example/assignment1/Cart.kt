@@ -48,12 +48,10 @@ class CartActivity : AppCompatActivity() {
             val existingItemImage = itemImageView.drawable
 
             if (existingItemName.isEmpty() || existingItemImage == null) {
-                // Found an empty slot, fill it with the item info
                 itemNameTextView.text = itemName
                 itemPriceTextView.text = itemPrice
                 itemImageView.setImageResource(itemImageResId)
 
-                // Set the visibility of the views
                 itemNameTextView.visibility = View.VISIBLE
                 itemPriceTextView.visibility = View.VISIBLE
                 itemImageView.visibility = View.VISIBLE
@@ -64,18 +62,15 @@ class CartActivity : AppCompatActivity() {
 
 
 
-        // Get the data from the intent
 //        val itemName = intent.getStringExtra("itemName")
 //        val itemPrice = intent.getStringExtra("itemPrice")
 //        val itemImageResId = intent.getIntExtra("itemImageResId", 0)
 0
-        // Display the data in the empty slot
         itemNameTextView?.text = itemName
         itemPriceTextView?.text = itemPrice
         itemImageView?.setImageResource(itemImageResId)
         calculateTotalPrice()
 
-        // Set the visibility of the views based on whether the item is present
         if (itemName.isNullOrEmpty() || itemName == "TextView") {
             itemNameTextView?.visibility = View.GONE
             itemPriceTextView?.visibility = View.GONE
@@ -127,8 +122,7 @@ class CartActivity : AppCompatActivity() {
 
 
     private fun getFoodItemList(): List<FoodItem> {
-        // Replace this with your logic to retrieve the list of food items from the database or any other source
-        // This is just a sample implementation
+
 
         val foodItemList = mutableListOf<FoodItem>()
         foodItemList.add(FoodItem("Steak", R.drawable.stake, 22.00))

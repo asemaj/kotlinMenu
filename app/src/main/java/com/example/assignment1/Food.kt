@@ -60,13 +60,11 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
     private fun onRadioButtonChecked(item: FoodItem) {
         val selectedFood = getSelectedFood()
         selectedFood?.let {
-            // Add the selected food item to the cart or perform any other action
             listener?.onItemSelected(item)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the fragment layout
         val view = inflater.inflate(R.layout.fragment_food, container, false)
 
 
@@ -84,7 +82,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 //            radioGroup.addView(radioButton)
 //        }
 //
-//        // Handle radio button selection
 //        radioGroup.setOnCheckedChangeListener { group, checkedId ->
 //            val radioButton = group.findViewById<RadioButton>(checkedId)
 //            val selectedFoodItem = radioButton?.tag as? FoodItem
@@ -105,7 +102,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 
 
 
-//        // Initialize the ActivityResultLauncher
 //        cartActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 //            if (result.resultCode == Activity.RESULT_OK) {
 //                val data: Intent? = result.data
@@ -125,7 +121,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 
         val cartImageView = requireActivity().findViewById<ImageView>(R.id.cartBtn)
 
-        // Declare the intent variable
         val intent = Intent(requireContext(), CartActivity::class.java)
 
         steakImageView = view.findViewById(R.id.stake)
@@ -150,19 +145,15 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 
 
 
-        // Set click listener for the steakImageView
         steakButton.setOnClickListener {
             val itemName = "Steak"
             val itemPrice = steakButton.text.toString()
             val itemImageResId = R.drawable.stake
 
-            // Create a new FoodItem object
             val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
 
-            // Add the item to the list
             itemList.add(item)
 
-            // Move the selected item to the top of the list
             val selectedItem = itemList.find { it.name == itemName }
             if (selectedItem != null) {
                 val selectedIndex = itemList.indexOf(selectedItem)
@@ -170,7 +161,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
                 itemList.add(0, selectedFoodItem)
             }
 
-            // Update the extras in the intent
             intent.putExtra("itemName", itemName)
             intent.putExtra("itemPrice", itemPrice)
             intent.putExtra("itemImageResId", itemImageResId)
@@ -181,25 +171,20 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
             val itemPrice = lasagnaButton.text.toString()
             val itemImageResId = R.drawable.lasagna
 
-            // Update the extras in the intent
             intent.putExtra("itemName", itemName)
             intent.putExtra("itemPrice", itemPrice)
             intent.putExtra("itemImageResId", itemImageResId)
 
-            // Start the CartActivity with the updated intent
         }
         meatballsButton.setOnClickListener {
             val itemName = "meatballs"
             val itemPrice = meatballsButton.text.toString()
             val itemImageResId = R.drawable.meatball
 
-            // Create a new FoodItem object
             val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
 
-            // Add the item to the list
             itemList.add(item)
 
-            // Move the selected item to the top of the list
             val selectedItem = itemList.find { it.name == itemName }
             if (selectedItem != null) {
                 val selectedIndex = itemList.indexOf(selectedItem)
@@ -207,7 +192,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
                 itemList.add(0, selectedFoodItem)
             }
 
-            // Update the extras in the intent
             intent.putExtra("itemName", itemName)
             intent.putExtra("itemPrice", itemPrice)
             intent.putExtra("itemImageResId", itemImageResId)
@@ -218,13 +202,10 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
             val itemPrice = tacosButton.text.toString()
             val itemImageResId = R.drawable.taco
 
-            // Create a new FoodItem object
             val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
 
-            // Add the item to the list
             itemList.add(item)
 
-            // Move the selected item to the top of the list
             val selectedItem = itemList.find { it.name == itemName }
             if (selectedItem != null) {
                 val selectedIndex = itemList.indexOf(selectedItem)
@@ -232,7 +213,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
                 itemList.add(0, selectedFoodItem)
             }
 
-            // Update the extras in the intent
             intent.putExtra("itemName", itemName)
             intent.putExtra("itemPrice", itemPrice)
             intent.putExtra("itemImageResId", itemImageResId)
@@ -243,13 +223,10 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
             val itemPrice = bakedPotatoButton.text.toString()
             val itemImageResId = R.drawable.potato
 
-            // Create a new FoodItem object
             val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
 
-            // Add the item to the list
             itemList.add(item)
 
-            // Move the selected item to the top of the list
             val selectedItem = itemList.find { it.name == itemName }
             if (selectedItem != null) {
                 val selectedIndex = itemList.indexOf(selectedItem)
@@ -257,7 +234,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
                 itemList.add(0, selectedFoodItem)
             }
 
-            // Update the extras in the intent
             intent.putExtra("itemName", itemName)
             intent.putExtra("itemPrice", itemPrice)
             intent.putExtra("itemImageResId", itemImageResId)
@@ -289,15 +265,12 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 //
 //        val view = inflater.inflate(R.layout.fragment_food, container, false)
 //
-//        // Initialize the ActivityResultLauncher
 //        cartActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 //            if (result.resultCode == Activity.RESULT_OK) {
 //                val data: Intent? = result.data
 //                val selectedItems = data?.getParcelableArrayListExtra<Item>("selectedItems")
-//                // Handle the selected items as per your requirement
 //            }
 //        }
-//        // Rest of the fragment code
 //        return view
 //
 ////        var steakBtn: RadioButton? = view?.findViewById(R.id.steak)
@@ -306,7 +279,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 ////        var bakedPotatoBtn: RadioButton? = view?.findViewById(R.id.bakedpotato)
 ////        var tacosBtn: RadioButton? = view?.findViewById(R.id.tacos)
 //
-//        // Inflate the layout for this fragment
 ////        return inflater.inflate(R.layout.fragment_food, container, false)
 //    }
 
@@ -355,7 +327,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
                 val itemPrice = steakButton.text.toString()
                 val itemImageResId = R.drawable.stake
 
-                // Pass the item information to the CartActivity
                 val intent = Intent(requireContext(), CartActivity::class.java)
                 intent.putExtra("itemName", itemName)
                 intent.putExtra("itemPrice", itemPrice)
@@ -369,7 +340,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 //                val newItem = FoodItem( "Steak",R.drawable.stake, 22.0)
 //                onRadioButtonChecked(newItem)
 //            } else {
-//                // Handle the case when the radio button is unchecked
 //            }
 //        }
 
@@ -378,7 +348,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
                 val newItem = FoodItem( "Lasagna",R.drawable.lasagna, 10.0)
                 onRadioButtonChecked(newItem)
             } else {
-                // Handle the case when the radio button is unchecked
             }
         }
 
@@ -387,7 +356,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 //                val newItem = FoodItem("Steak",R.drawable.stake,  22.0)
 //                onRadioButtonChecked(newItem)
 //            } else {
-//                // Handle the case when the radio button is unchecked
 //            }
 //        }
 //
@@ -396,7 +364,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 //                val newItem = FoodItem( "Lasagna", R.drawable.lasagna,10.0)
 //                onRadioButtonChecked(newItem)
 //            } else {
-//                // Handle the case when the radio button is unchecked
 //            }
 //        }
 //        tacosBtn1?.setOnCheckedChangeListener { _, isChecked ->
@@ -404,7 +371,6 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
 //                val newItem = FoodItem( "Lasagna",R.drawable.lasagna, 10.0)
 //                onRadioButtonChecked(newItem)
 //            } else {
-//                // Handle the case when the radio button is unchecked
 //            }
 //        }
 
