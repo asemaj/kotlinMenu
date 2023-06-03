@@ -24,8 +24,6 @@ class OrderDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Handle database upgrades if necessary
-        // You can implement logic here to migrate data from older versions to newer versions
     }
 
 }
@@ -34,7 +32,6 @@ class OrderDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
 
 
 object OrderContract {
-    // Table name
     object OrderEntry {
         const val TABLE_NAME = "orders"
         const val COLUMN_ORDER_ID = "_id"
@@ -42,7 +39,6 @@ object OrderContract {
         const val COLUMN_ORDER_ITEMS = "order_items"
         const val COLUMN_ORDER_QUANTITY = "order_quantity"
 
-        // Content URI for the orders table
         val CONTENT_URI: Uri = Uri.withAppendedPath(
             Uri.parse("com.example.assignment1"),
             TABLE_NAME

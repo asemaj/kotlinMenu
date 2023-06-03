@@ -157,21 +157,21 @@ class MainActivity : AppCompatActivity(),OnItemSelectionListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.Main -> {
-                val fragment = FoodFragment() // replace with the fragment you want to navigate to
+                val fragment = FoodFragment()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.DefaultLayout, fragment)
                     .commit()
                 return true
             }
             R.id.Beverages -> {
-                val fragment = Beverages() // replace with the fragment you want to navigate to
+                val fragment = Beverages()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.DefaultLayout, fragment)
                     .commit()
                 return true
             }
             R.id.Sides -> {
-                val fragment = Sides() // replace with the fragment you want to navigate to
+                val fragment = Sides()
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.DefaultLayout, fragment)
                     .commit()

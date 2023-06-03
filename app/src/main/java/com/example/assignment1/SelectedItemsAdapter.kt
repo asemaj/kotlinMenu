@@ -26,7 +26,6 @@ class SelectedItemsAdapter(private val selectedItems: List<FoodItem>) : Recycler
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(selectedItem: FoodItem) {
-            // Bind the selected item data to the views in the ViewHolder
             itemView.findViewById<TextView>(R.id.itemName).text = selectedItem.name
 //            itemView.findViewById<ImageView>(R.id.itemImage).setImageResource(selectedItem.image)
             itemView.findViewById<TextView>(R.id.itemPrice).text = selectedItem.price.toString()

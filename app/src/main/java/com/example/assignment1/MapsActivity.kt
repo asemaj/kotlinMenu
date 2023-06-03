@@ -49,13 +49,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         mMap.setOnMapClickListener { latLng ->
-            // Remove previous marker if it exists
             marker?.remove()
 
-            // Add a new marker at the clicked location
             marker = mMap.addMarker(MarkerOptions().position(latLng).title("Pinned Location"))
 
-            // Perform reverse geocoding to get the street name
             val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
             if (addresses != null) {
                 if (addresses.isNotEmpty()) {
@@ -66,10 +63,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-        // Add a marker in PSUT and move the camera
         val location = LatLng(32.0235, 35.8762)
 
-        // Remove the existing marker if it exists
         marker?.remove()
 
         marker = mMap.addMarker(MarkerOptions().position(location).title("Marker in PSUT"))
