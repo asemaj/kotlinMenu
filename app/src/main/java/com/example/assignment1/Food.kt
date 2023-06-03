@@ -24,7 +24,7 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
     private lateinit var cartActivityResultLauncher: ActivityResultLauncher<Intent>
     private var listener: OnItemSelectionListener? = null
 
-    val itemList = mutableListOf<Item>()
+    val itemList = mutableListOf<FoodItem>()
 
     private val foodItemList = mutableListOf<FoodItem>()
     private val selectedFoodItems = mutableListOf<FoodItem>()
@@ -122,10 +122,15 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val cartImageView = requireActivity().findViewById<ImageView>(R.id.cartBtn)
+
+        // Declare the intent variable
+        val intent = Intent(requireContext(), CartActivity::class.java)
+
         steakImageView = view.findViewById(R.id.stake)
         steakDescriptionTextView = view.findViewById(R.id.stakeDescription)
         steakButton = view.findViewById(R.id.stakeBtn)
-
 
         lasagnaImageView = view.findViewById(R.id.lasagna)
         lasagnaDescriptionTextView = view.findViewById(R.id.lasagnaDescription)
@@ -135,6 +140,14 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
         meatballsDescriptionTextView = view.findViewById(R.id.meatballDescription)
         meatballsButton = view.findViewById(R.id.meatballsBtn)
 
+        tacosImageView = view.findViewById(R.id.taco)
+        tacosDescriptionTextView = view.findViewById(R.id.tacoDescription)
+        tacosButton = view.findViewById(R.id.tacosBtn)
+
+        bakedPotatoImageView = view.findViewById(R.id.imageView)
+        bakedPotatoDescriptionTextView = view.findViewById(R.id.textView31)
+        bakedPotatoButton = view.findViewById(R.id.bakedpotatoBtn)
+
 
 
         // Set click listener for the steakImageView
@@ -143,16 +156,24 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
             val itemPrice = steakButton.text.toString()
             val itemImageResId = R.drawable.stake
 
-            // Create a new Item object
-            val item = Item(itemName, itemPrice.toDoubleOrNull(), itemImageResId)
+            // Create a new FoodItem object
+            val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
 
             // Add the item to the list
             itemList.add(item)
 
-            // Start the CartActivity and pass the selected item
-            val intent = Intent(requireContext(), CartActivity::class.java)
-            intent.putExtra("selectedItem", item)
-            startActivity(intent)
+            // Move the selected item to the top of the list
+            val selectedItem = itemList.find { it.name == itemName }
+            if (selectedItem != null) {
+                val selectedIndex = itemList.indexOf(selectedItem)
+                val selectedFoodItem = itemList.removeAt(selectedIndex)
+                itemList.add(0, selectedFoodItem)
+            }
+
+            // Update the extras in the intent
+            intent.putExtra("itemName", itemName)
+            intent.putExtra("itemPrice", itemPrice)
+            intent.putExtra("itemImageResId", itemImageResId)
         }
 
         lasagnaButton.setOnClickListener {
@@ -160,13 +181,95 @@ class FoodFragment : Fragment(), OnItemSelectionListener {
             val itemPrice = lasagnaButton.text.toString()
             val itemImageResId = R.drawable.lasagna
 
-            val intent = Intent(requireContext(), CartActivity::class.java)
+            // Update the extras in the intent
             intent.putExtra("itemName", itemName)
             intent.putExtra("itemPrice", itemPrice)
             intent.putExtra("itemImageResId", itemImageResId)
+
+            // Start the CartActivity with the updated intent
+        }
+        meatballsButton.setOnClickListener {
+            val itemName = "meatballs"
+            val itemPrice = meatballsButton.text.toString()
+            val itemImageResId = R.drawable.meatball
+
+            // Create a new FoodItem object
+            val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
+
+            // Add the item to the list
+            itemList.add(item)
+
+            // Move the selected item to the top of the list
+            val selectedItem = itemList.find { it.name == itemName }
+            if (selectedItem != null) {
+                val selectedIndex = itemList.indexOf(selectedItem)
+                val selectedFoodItem = itemList.removeAt(selectedIndex)
+                itemList.add(0, selectedFoodItem)
+            }
+
+            // Update the extras in the intent
+            intent.putExtra("itemName", itemName)
+            intent.putExtra("itemPrice", itemPrice)
+            intent.putExtra("itemImageResId", itemImageResId)
+        }
+
+        tacosButton.setOnClickListener {
+            val itemName = "taco"
+            val itemPrice = tacosButton.text.toString()
+            val itemImageResId = R.drawable.taco
+
+            // Create a new FoodItem object
+            val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
+
+            // Add the item to the list
+            itemList.add(item)
+
+            // Move the selected item to the top of the list
+            val selectedItem = itemList.find { it.name == itemName }
+            if (selectedItem != null) {
+                val selectedIndex = itemList.indexOf(selectedItem)
+                val selectedFoodItem = itemList.removeAt(selectedIndex)
+                itemList.add(0, selectedFoodItem)
+            }
+
+            // Update the extras in the intent
+            intent.putExtra("itemName", itemName)
+            intent.putExtra("itemPrice", itemPrice)
+            intent.putExtra("itemImageResId", itemImageResId)
+        }
+
+        bakedPotatoButton.setOnClickListener {
+            val itemName = "baked potato"
+            val itemPrice = bakedPotatoButton.text.toString()
+            val itemImageResId = R.drawable.potato
+
+            // Create a new FoodItem object
+            val item = FoodItem(itemName, itemImageResId, itemPrice.toDoubleOrNull() ?: 0.0)
+
+            // Add the item to the list
+            itemList.add(item)
+
+            // Move the selected item to the top of the list
+            val selectedItem = itemList.find { it.name == itemName }
+            if (selectedItem != null) {
+                val selectedIndex = itemList.indexOf(selectedItem)
+                val selectedFoodItem = itemList.removeAt(selectedIndex)
+                itemList.add(0, selectedFoodItem)
+            }
+
+            // Update the extras in the intent
+            intent.putExtra("itemName", itemName)
+            intent.putExtra("itemPrice", itemPrice)
+            intent.putExtra("itemImageResId", itemImageResId)
+        }
+
+
+        cartImageView.setOnClickListener(){
             startActivity(intent)
         }
+
     }
+
     override fun onItemSelected(item: FoodItem) {
         val cartIntent = Intent(requireContext(), CartActivity::class.java)
         val selectedItems = arrayListOf(item) // Create an ArrayList with the selected item

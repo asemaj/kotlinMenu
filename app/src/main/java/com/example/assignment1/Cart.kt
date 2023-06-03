@@ -29,37 +29,51 @@ class CartActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val itemNames = arrayOf("Steak", "lasagna", "MeatBalls", "Baked Potato", "Tacos")
 
-        val checkoutPriceTextView: TextView = findViewById(R.id.CheckoutPrice)
-
-        // Find the first empty slot in the cart
-        var index = 1
-        var itemNameTextView: TextView? = null
-        var itemPriceTextView: TextView? = null
-        var itemImageView: ImageView? = null
-
-        while (index <= 7) {
-            itemNameTextView = findViewById(resources.getIdentifier("item${index}NameTextView", "id", packageName))
-            itemPriceTextView = findViewById(resources.getIdentifier("item${index}PriceTextView", "id", packageName))
-            itemImageView = findViewById(resources.getIdentifier("item${index}ImageView", "id", packageName))
-
-            if (itemNameTextView.text == "TextView") {
-                // Found an empty slot, break the loop
-                break
-            }
-
-            index++
-        }
-
-        // Get the data from the intent
         val itemName = intent.getStringExtra("itemName")
         val itemPrice = intent.getStringExtra("itemPrice")
         val itemImageResId = intent.getIntExtra("itemImageResId", 0)
 
+        var itemNameTextView: TextView? = null
+        var itemPriceTextView: TextView? = null
+        var itemImageView: ImageView? = null
+
+        for (index in 1..7) {
+            itemNameTextView = findViewById(resources.getIdentifier("item${index}NameTextView", "id", packageName))
+            itemPriceTextView = findViewById(resources.getIdentifier("item${index}PriceTextView", "id", packageName))
+            itemImageView = findViewById(resources.getIdentifier("item${index}ImageView", "id", packageName))
+
+            val existingItemName = itemNameTextView.text.toString()
+            val existingItemImage = itemImageView.drawable
+
+            if (existingItemName.isEmpty() || existingItemImage == null) {
+                // Found an empty slot, fill it with the item info
+                itemNameTextView.text = itemName
+                itemPriceTextView.text = itemPrice
+                itemImageView.setImageResource(itemImageResId)
+
+                // Set the visibility of the views
+                itemNameTextView.visibility = View.VISIBLE
+                itemPriceTextView.visibility = View.VISIBLE
+                itemImageView.visibility = View.VISIBLE
+
+                break
+            }
+        }
+
+
+
+        // Get the data from the intent
+//        val itemName = intent.getStringExtra("itemName")
+//        val itemPrice = intent.getStringExtra("itemPrice")
+//        val itemImageResId = intent.getIntExtra("itemImageResId", 0)
+0
         // Display the data in the empty slot
         itemNameTextView?.text = itemName
         itemPriceTextView?.text = itemPrice
         itemImageView?.setImageResource(itemImageResId)
+        calculateTotalPrice()
 
         // Set the visibility of the views based on whether the item is present
         if (itemName.isNullOrEmpty() || itemName == "TextView") {
@@ -71,12 +85,15 @@ class CartActivity : AppCompatActivity() {
             itemPriceTextView?.visibility = View.VISIBLE
             itemImageView?.visibility = View.VISIBLE
         }
-        calculateTotalPrice()
 
 
     }
 
+
+
+
     private fun calculateTotalPrice() {
+        val checkoutPriceTextView: TextView = findViewById(R.id.CheckoutPrice)
         var index = 1
         var totalPrice = 0.0
         while (index <= 7) {
@@ -87,15 +104,18 @@ class CartActivity : AppCompatActivity() {
                 val itemPrice = priceString.toDoubleOrNull()
                 if (itemPrice != null) {
                     totalPrice += itemPrice
+                    val checkoutPriceTextView = findViewById<TextView>(R.id.CheckoutPrice)
+                    checkoutPriceTextView.text = totalPrice.toString()
                 } else {
                 }
+
+                checkoutPriceTextView.text = totalPrice.toString();
             }
 
             index++
         }
 
-        val checkoutPriceTextView = findViewById<TextView>(R.id.CheckoutPrice)
-        checkoutPriceTextView.text = totalPrice.toString()
+
     }
 
 
