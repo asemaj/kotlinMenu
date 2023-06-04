@@ -103,6 +103,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/slot1"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:orientation="horizontal">
@@ -137,6 +138,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/slot2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -171,6 +173,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/slot3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -205,6 +208,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/slot4"
                 android:layout_width="420dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -239,6 +243,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/slot5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -273,6 +278,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/slot6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

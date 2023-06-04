@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -39,15 +40,16 @@ class CartActivity : AppCompatActivity() {
         var itemPriceTextView: TextView? = null
         var itemImageView: ImageView? = null
 
+
         for (index in 1..7) {
             itemNameTextView = findViewById(resources.getIdentifier("item${index}NameTextView", "id", packageName))
             itemPriceTextView = findViewById(resources.getIdentifier("item${index}PriceTextView", "id", packageName))
             itemImageView = findViewById(resources.getIdentifier("item${index}ImageView", "id", packageName))
 
-            val existingItemName = itemNameTextView.text.toString()
+            val currentItemName = itemNameTextView.text.toString()
             val existingItemImage = itemImageView.drawable
 
-            if (existingItemName.isEmpty() || existingItemImage == null) {
+            if (currentItemName.isNullOrEmpty() || existingItemImage == null) {
                 itemNameTextView.text = itemName
                 itemPriceTextView.text = itemPrice
                 itemImageView.setImageResource(itemImageResId)
@@ -82,7 +84,62 @@ class CartActivity : AppCompatActivity() {
         }
 
 
-    }
+
+        var slot1:LinearLayout = findViewById(R.id.slot1)
+        var slot2:LinearLayout = findViewById(R.id.slot2)
+        var slot3:LinearLayout = findViewById(R.id.slot3)
+        var slot4:LinearLayout = findViewById(R.id.slot4)
+        var slot5:LinearLayout = findViewById(R.id.slot5)
+        var slot6:LinearLayout = findViewById(R.id.slot6)
+
+
+        var removebtn: Button = findViewById(R.id.removeItem1)
+        var removebtn1: Button = findViewById(R.id.removeItem2)
+        var removebtn2: Button = findViewById(R.id.removeItem3)
+        var removebtn3: Button = findViewById(R.id.removeItem4)
+        var removebtn4: Button = findViewById(R.id.removeItem5)
+        var removebtn5: Button = findViewById(R.id.removeItem6)
+        var removebtn6: Button = findViewById(R.id.removeItem7)
+
+
+
+        removebtn.setOnClickListener{
+            var image: ImageView = findViewById(R.id.item1ImageView)
+            var name: TextView = findViewById(R.id.item1NameTextView)
+            var price: TextView = findViewById(R.id.item1PriceTextView)
+            removebtn.visibility = View.GONE
+            image.visibility = View.GONE
+            name.visibility = View.GONE
+            price.visibility = View.GONE
+
+        }
+
+        removebtn1.setOnClickListener {
+            slot1.visibility = View.GONE
+        }
+
+        removebtn2.setOnClickListener {
+            slot2.visibility = View.GONE
+        }
+
+        removebtn3.setOnClickListener {
+            slot3.visibility = View.GONE
+        }
+
+        removebtn4.setOnClickListener {
+            slot4.visibility = View.GONE
+        }
+
+        removebtn5.setOnClickListener {
+            slot5.visibility = View.GONE
+        }
+
+        removebtn6.setOnClickListener {
+            slot6.visibility = View.GONE
+        }
+
+
+        }
 
 
 

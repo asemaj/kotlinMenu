@@ -35,9 +35,9 @@
                 android:layout_weight="1"
                 android:text="ketchup" />
 
-            <RadioButton
+            <Button
                 android:id="@+id/ketchupBtn"
-                android:layout_width="45dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="$0.5" />
@@ -72,9 +72,9 @@
                 android:layout_weight="1"
                 android:text=" mayo" />
 
-            <RadioButton
+            <Button
                 android:id="@+id/mayoBtn"
-                android:layout_width="45dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="$0.5" />
@@ -99,19 +99,19 @@
                 android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/cocaColaDescription"
+                android:id="@+id/cocaclaDescription"
                 android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text=" buffalo sauce" />
 
-
-            <RadioButton
-                android:id="@+id/buffaloBtn"
-                android:layout_width="45dp"
+            <Button
+                android:id="@+id/BuffaloBtn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="$0.5" />
+
 
         </LinearLayout>
 
@@ -138,13 +138,13 @@
                 android:layout_weight="1"
                 android:text="ranch sauce"/>
 
-
-            <RadioButton
+            <Button
                 android:id="@+id/ranchBtn"
-                android:layout_width="45dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="$0.5" />
+
 
         </LinearLayout>
 
